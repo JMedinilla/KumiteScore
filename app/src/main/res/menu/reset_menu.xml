@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_reset_all"
+        android:icon="@drawable/menu_icon_all"
+        android:title="@string/menuActionResetAll"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_reset_score"
+        android:icon="@drawable/menu_icon_score"
+        android:title="@string/menuActionResetScore"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_reset_faults"
+        android:icon="@drawable/menu_icon_faults"
+        android:title="@string/menuActionResetFaults"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_reset_timer"
+        android:icon="@drawable/menu_icon_timer"
+        android:title="@string/menuActionResetTimer"
+        app:showAsAction="never" />
+</menu>

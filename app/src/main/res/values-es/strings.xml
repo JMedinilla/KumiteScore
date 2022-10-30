@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menuActionResetScore">Borrar Marcador</string>
+    <string name="menuActionResetFaults">Borrar Faltas</string>
+    <string name="menuActionResetTimer">Reiniciar Tiempo</string>
+    <string name="menuActionResetAll">Borrar Todo</string>
+    <string name="picker_cancel">Cancelar</string>
+    <string name="picker_save">Aplicar</string>
+</resources>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name" translatable="false">KumiteScore</string>
+    <string name="default_score" translatable="false">0</string>
+    <string name="default_time" translatable="false">2:00</string>
+    <string name="timer_separator" translatable="false">:</string>
+    <string name="chukoku" translatable="false"><b>C</b></string>
+    <string name="keikoku" translatable="false"><b>K</b></string>
+    <string name="hansokuchui" translatable="false"><b>HC</b></string>
+    <string name="hansoku" translatable="false"><b>H</b></string>
+    <string name="contentDescription" translatable="false">Placeholder</string>
+    <string name="menuActionResetAll">Reset All</string>
+    <string name="menuActionResetScore">Reset Score</string>
+    <string name="menuActionResetFaults">Reset Fouls</string>
+    <string name="menuActionResetTimer">Reset Timer</string>
+    <string name="picker_cancel">Cancel</string>
+    <string name="picker_save">Save</string>
+</resources>
