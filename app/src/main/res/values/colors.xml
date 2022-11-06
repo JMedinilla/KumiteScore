@@ -6,7 +6,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="kumite_red">#FF2D1F</color>
     <color name="kumite_blue">#495EFB</color>
-    <color name="black_transp">#77000000</color>
-    <color name="black_transp_light">#44000000</color>
+    <color name="black_transp">#99000000</color>
+    <color name="black_transp_light">#22000000</color>
     <color name="yellow_light">#FFFF5C</color>
 </resources>

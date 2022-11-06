@@ -14,4 +14,5 @@
     <string name="menuActionResetTimer">Reset Timer</string>
     <string name="picker_cancel">Cancel</string>
     <string name="picker_save">Save</string>
+    <string name="time_left" translatable="false">%1$s:%2$s</string>
 </resources>

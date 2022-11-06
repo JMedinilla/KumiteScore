@@ -90,12 +90,12 @@
                     android:gravity="center"
                     android:text="@string/default_score"
                     android:textColor="@color/white"
-                    android:textSize="140sp" />
+                    android:textSize="150sp" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="4"
+                    android:layout_weight="5"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -111,7 +111,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/text_border"
                             android:contentDescription="@string/contentDescription"
-                            android:padding="10dp"
+                            android:padding="5dp"
                             android:src="@drawable/circle_empty"
                             android:textColor="@color/white" />
 
@@ -122,7 +122,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/text_border"
                             android:contentDescription="@string/contentDescription"
-                            android:padding="10dp"
+                            android:padding="5dp"
                             android:src="@drawable/circle_empty"
                             android:textColor="@color/white" />
                     </LinearLayout>
@@ -136,7 +136,7 @@
                         android:gravity="center"
                         android:text="@string/default_time"
                         android:textColor="@color/white"
-                        android:textSize="80sp" />
+                        android:textSize="100sp" />
                 </LinearLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -148,7 +148,7 @@
                     android:gravity="center"
                     android:text="@string/default_score"
                     android:textColor="@color/white"
-                    android:textSize="140sp" />
+                    android:textSize="150sp" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -319,7 +319,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:contentDescription="@string/contentDescription"
-                        android:padding="5dp"
                         android:src="@drawable/circle_empty" />
 
                     <ImageView
@@ -328,7 +327,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:contentDescription="@string/contentDescription"
-                        android:padding="5dp"
                         android:src="@drawable/circle_empty" />
 
                     <ImageView
@@ -337,7 +335,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:contentDescription="@string/contentDescription"
-                        android:padding="5dp"
                         android:src="@drawable/circle_empty" />
 
                     <ImageView
@@ -346,7 +343,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:contentDescription="@string/contentDescription"
-                        android:padding="5dp"
                         android:src="@drawable/circle_empty" />
 
                     <ImageButton
@@ -380,7 +376,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:contentDescription="@string/contentDescription"
-                        android:padding="5dp"
                         android:src="@drawable/circle_empty" />
 
                     <ImageView
@@ -389,7 +384,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:contentDescription="@string/contentDescription"
-                        android:padding="5dp"
                         android:src="@drawable/circle_empty" />
 
                     <ImageView
@@ -398,7 +392,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:contentDescription="@string/contentDescription"
-                        android:padding="5dp"
                         android:src="@drawable/circle_empty" />
 
                     <ImageView
@@ -407,7 +400,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:contentDescription="@string/contentDescription"
-                        android:padding="5dp"
                         android:src="@drawable/circle_empty" />
 
                     <ImageButton
@@ -442,7 +434,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:contentDescription="@string/contentDescription"
-                        android:padding="5dp"
                         android:src="@drawable/circle_empty" />
 
                     <ImageView
@@ -451,7 +442,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:contentDescription="@string/contentDescription"
-                        android:padding="5dp"
                         android:src="@drawable/circle_empty" />
 
                     <ImageView
@@ -460,7 +450,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:contentDescription="@string/contentDescription"
-                        android:padding="5dp"
                         android:src="@drawable/circle_empty" />
 
                     <ImageView
@@ -469,7 +458,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:contentDescription="@string/contentDescription"
-                        android:padding="5dp"
                         android:src="@drawable/circle_empty" />
 
                     <ImageButton
@@ -503,7 +491,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:contentDescription="@string/contentDescription"
-                        android:padding="5dp"
                         android:src="@drawable/circle_empty" />
 
                     <ImageView
@@ -512,7 +499,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:contentDescription="@string/contentDescription"
-                        android:padding="5dp"
                         android:src="@drawable/circle_empty" />
 
                     <ImageView
@@ -521,7 +507,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:contentDescription="@string/contentDescription"
-                        android:padding="5dp"
                         android:src="@drawable/circle_empty" />
 
                     <ImageView
@@ -530,7 +515,6 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:contentDescription="@string/contentDescription"
-                        android:padding="5dp"
                         android:src="@drawable/circle_empty" />
 
                     <ImageButton

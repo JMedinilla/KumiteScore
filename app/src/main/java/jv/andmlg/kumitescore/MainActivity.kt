@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     private var timer: CountDownTimer? = null
     private var timerPlayer: MediaPlayer? = null
+    private var timerPlayerShort: MediaPlayer? = null
 
     //region UI Elements
     private var leftSideBackground: LinearLayout? = null
@@ -244,6 +245,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         timerPlayer = MediaPlayer.create(this, R.raw.whistle)
+        timerPlayerShort = MediaPlayer.create(this, R.raw.beep)
 
         sound = getSharedPreferences("KumiteScore", MODE_PRIVATE).getBoolean("sound", true)
         printSound()
@@ -254,6 +256,10 @@ class MainActivity : AppCompatActivity() {
         if (timerPlayer != null) {
             timerPlayer?.release()
             timerPlayer = null
+        }
+        if (timerPlayerShort != null) {
+            timerPlayerShort?.release()
+            timerPlayerShort = null
         }
     }
 
@@ -485,7 +491,7 @@ class MainActivity : AppCompatActivity() {
         val minutes = min.toString()
         var seconds = sec.toString()
         if (sec < 10) seconds = "0".plus(seconds)
-        txtTimer?.text = "$minutes:$seconds"
+        txtTimer?.text = getString(R.string.time_left, minutes, seconds)
     }
 
     private fun resetAll() {
@@ -532,7 +538,7 @@ class MainActivity : AppCompatActivity() {
                     timerMin = ((millisUntilFinished / 1000) / 60).toInt()
                     timerSec = ((millisUntilFinished / 1000) % 60).toInt()
                     printTimer(timerMin, timerSec)
-                    if (timerMin == 0 && timerSec == 15 && sound) playSound()
+                    if (timerMin == 0 && timerSec == 15 && sound) playSoundShort()
                 }
 
                 override fun onFinish() {
@@ -550,5 +556,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun playSound() {
         timerPlayer?.start()
+    }
+
+    private fun playSoundShort() {
+        timerPlayerShort?.start()
     }
 }
