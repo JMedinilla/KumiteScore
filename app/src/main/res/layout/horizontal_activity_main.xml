@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ma1_parentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:keepScreenOn="true"
+    android:orientation="horizontal"
+    tools:context=".HorizontalScoreboard">
+
+    <LinearLayout
+        android:id="@+id/leftSideScreen"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignEnd="@id/mainScreenDivider"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/kumite_blue"
+        android:orientation="vertical" />
+
+    <View
+        android:id="@+id/mainScreenDivider"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:id="@+id/rightSideScreen"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignStart="@id/mainScreenDivider"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/kumite_red"
+        android:orientation="vertical" />
+
+    <RelativeLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="12"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="bottom|start"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:contentDescription="@string/contentDescription"
+                            android:src="@drawable/flag_ippon_left" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/textLeft_Ippon"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:text="@string/ipPlchldrL"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:contentDescription="@string/contentDescription"
+                            android:src="@drawable/flag_waza_left" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/textLeft_Waza"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:text="@string/waPlchldrL"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:contentDescription="@string/contentDescription"
+                            android:src="@drawable/flag_yuko_left" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/textLeft_Yuko"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:text="@string/yuPlchldrL"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/leftScore"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:gravity="center"
+                    android:text="@string/default_score"
+                    android:textColor="@color/white"
+                    android:textSize="160sp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/leftSenshuButton"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/contentDescription"
+                            android:src="@drawable/circle_empty"
+                            android:textColor="@color/white" />
+
+                        <ImageView
+                            android:id="@+id/rightSenshuButton"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/contentDescription"
+                            android:src="@drawable/circle_empty"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/mainMatchTimer"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:background="@drawable/rounded_timer"
+                        android:gravity="center"
+                        android:text="@string/default_time"
+                        android:textColor="@color/white"
+                        android:textSize="90sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/rightScore"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:gravity="center"
+                    android:text="@string/default_score"
+                    android:textColor="@color/white"
+                    android:textSize="160sp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="bottom|end"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/textRight_Ippon"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:gravity="end"
+                            android:text="@string/ipPlchldrR"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@string/contentDescription"
+                            android:src="@drawable/flag_ippon_right" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/textRight_Waza"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:gravity="end"
+                            android:text="@string/waPlchldrR"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@string/contentDescription"
+                            android:src="@drawable/flag_waza_right" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/textRight_Yuko"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:gravity="end"
+                            android:text="@string/yuPlchldrR"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@string/contentDescription"
+                            android:src="@drawable/flag_yuko_right" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="7"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/leftChuiLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:orientation="horizontal"
+                        android:paddingStart="0dp"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="0dp"
+                        app:layout_constraintBottom_toTopOf="@+id/ma2_penaltiesTopHansokuLayout"
+                        app:layout_constraintEnd_toStartOf="@+id/ma2_buttonTop_AddPenalty"
+                        app:layout_constraintStart_toEndOf="@+id/ma2_matchTimer"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/left_3C"
+                            android:layout_width="70dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="1dp"
+                            android:contentDescription="@string/contentDescription"
+                            android:src="@drawable/circle_empty"
+                            android:textColor="@color/white" />
+
+                        <ImageView
+                            android:id="@+id/left_2C"
+                            android:layout_width="70dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="1dp"
+                            android:contentDescription="@string/contentDescription"
+                            android:src="@drawable/circle_empty"
+                            android:textColor="@color/white" />
+
+                        <ImageView
+                            android:id="@+id/left_1C"
+                            android:layout_width="70dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="1dp"
+                            android:contentDescription="@string/contentDescription"
+                            android:src="@drawable/circle_empty"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/leftHansokuLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:orientation="horizontal"
+                        android:paddingStart="0dp"
+                        android:paddingTop="0dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="4dp"
+                        app:layout_constraintBottom_toTopOf="@+id/ma2_penaltiesBottomChuiLayout"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/ma2_buttonTop_SubsPenalty"
+                        app:layout_constraintStart_toEndOf="@+id/ma2_matchTimer"
+                        app:layout_constraintTop_toBottomOf="@+id/ma2_penaltiesTopChuiLayout">
+
+                        <ImageView
+                            android:id="@+id/left_H"
+                            android:layout_width="70dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="1dp"
+                            android:contentDescription="@string/contentDescription"
+                            android:src="@drawable/circle_empty"
+                            android:textColor="@color/white" />
+
+                        <ImageView
+                            android:id="@+id/left_HC"
+                            android:layout_width="70dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="1dp"
+                            android:contentDescription="@string/contentDescription"
+                            android:src="@drawable/circle_empty"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/mainPageIcon"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/contentDescription"
+                    android:src="@drawable/karate"
+                    android:textColor="@color/white" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/rightChuiLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:orientation="horizontal"
+                        android:paddingStart="12dp"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="0dp"
+                        android:paddingBottom="0dp"
+                        app:layout_constraintBottom_toTopOf="@+id/ma2_penaltiesTopHansokuLayout"
+                        app:layout_constraintEnd_toStartOf="@+id/ma2_buttonTop_AddPenalty"
+                        app:layout_constraintStart_toEndOf="@+id/ma2_matchTimer"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/right_1C"
+                            android:layout_width="70dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="1dp"
+                            android:contentDescription="@string/contentDescription"
+                            android:src="@drawable/circle_empty"
+                            android:textColor="@color/white" />
+
+                        <ImageView
+                            android:id="@+id/right_2C"
+                            android:layout_width="70dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="1dp"
+                            android:contentDescription="@string/contentDescription"
+                            android:src="@drawable/circle_empty"
+                            android:textColor="@color/white" />
+
+                        <ImageView
+                            android:id="@+id/right_3C"
+                            android:layout_width="70dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="1dp"
+                            android:contentDescription="@string/contentDescription"
+                            android:src="@drawable/circle_empty"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/rightHansokuLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:orientation="horizontal"
+                        android:paddingStart="12dp"
+                        android:paddingTop="0dp"
+                        android:paddingEnd="0dp"
+                        android:paddingBottom="4dp"
+                        app:layout_constraintBottom_toTopOf="@+id/ma2_penaltiesBottomChuiLayout"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/ma2_buttonTop_SubsPenalty"
+                        app:layout_constraintStart_toEndOf="@+id/ma2_matchTimer"
+                        app:layout_constraintTop_toBottomOf="@+id/ma2_penaltiesTopChuiLayout">
+
+                        <ImageView
+                            android:id="@+id/right_HC"
+                            android:layout_width="70dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="1dp"
+                            android:contentDescription="@string/contentDescription"
+                            android:src="@drawable/circle_empty"
+                            android:textColor="@color/white" />
+
+                        <ImageView
+                            android:id="@+id/right_H"
+                            android:layout_width="70dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="1dp"
+                            android:contentDescription="@string/contentDescription"
+                            android:src="@drawable/circle_empty"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@color/black_transp">
+
+                <ImageButton
+                    android:id="@+id/barSettings"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/contentDescription"
+                    android:src="@drawable/settings"
+                    app:layout_constraintEnd_toStartOf="@id/barSwap"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/barSwap"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/contentDescription"
+                    android:src="@drawable/swap_arrows"
+                    app:layout_constraintEnd_toStartOf="@id/barReset"
+                    app:layout_constraintStart_toEndOf="@+id/barSettings" />
+
+                <ImageButton
+                    android:id="@+id/barReset"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/contentDescription"
+                    android:src="@drawable/trash"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/barSwap" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <com.nambimobile.widgets.efab.ExpandableFabLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignEnd="@id/mainScreenDivider"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <com.nambimobile.widgets.efab.Overlay
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:overlay_color="@color/black_transp_overlay" />
+
+        <com.nambimobile.widgets.efab.ExpandableFab
+            android:id="@+id/left_PointsMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start"
+            android:layout_margin="8dp"
+            app:efab_color="@color/kumite_blue_dark"
+            app:efab_fabOptionPosition="below" />
+
+        <com.nambimobile.widgets.efab.FabOption
+            android:id="@+id/left_PointsIppon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/point_three"
+            app:fab_color="@color/kumite_blue"
+            app:label_backgroundColor="@color/black_transp"
+            app:label_position="right"
+            app:label_text="@string/points_Ippon"
+            app:label_textColor="@color/white" />
+
+        <com.nambimobile.widgets.efab.FabOption
+            android:id="@+id/left_PointsWaza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/point_two"
+            app:fab_color="@color/kumite_blue"
+            app:label_backgroundColor="@color/black_transp"
+            app:label_position="right"
+            app:label_text="@string/points_Waza"
+            app:label_textColor="@color/white" />
+
+        <com.nambimobile.widgets.efab.FabOption
+            android:id="@+id/left_PointsYuko"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/point_one"
+            app:fab_color="@color/kumite_blue"
+            app:label_backgroundColor="@color/black_transp"
+            app:label_position="right"
+            app:label_text="@string/points_Yuko"
+            app:label_textColor="@color/white" />
+
+        <com.nambimobile.widgets.efab.FabOption
+            android:id="@+id/left_PointsEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pencil_left"
+            app:fab_color="@color/kumite_blue" />
+    </com.nambimobile.widgets.efab.ExpandableFabLayout>
+
+    <com.nambimobile.widgets.efab.ExpandableFabLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignStart="@id/mainScreenDivider"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true">
+
+        <com.nambimobile.widgets.efab.Overlay
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:overlay_color="@color/black_transp_overlay" />
+
+        <com.nambimobile.widgets.efab.ExpandableFab
+            android:id="@+id/right_PointsMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_margin="8dp"
+            app:efab_color="@color/kumite_red_dark"
+            app:efab_fabOptionPosition="below" />
+
+        <com.nambimobile.widgets.efab.FabOption
+            android:id="@+id/right_PointsIppon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/point_three"
+            app:fab_color="@color/kumite_red"
+            app:label_backgroundColor="@color/black_transp"
+            app:label_position="left"
+            app:label_text="@string/points_Ippon"
+            app:label_textColor="@color/white" />
+
+        <com.nambimobile.widgets.efab.FabOption
+            android:id="@+id/right_PointsWaza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/point_two"
+            app:fab_color="@color/kumite_red"
+            app:label_backgroundColor="@color/black_transp"
+            app:label_position="left"
+            app:label_text="@string/points_Waza"
+            app:label_textColor="@color/white" />
+
+        <com.nambimobile.widgets.efab.FabOption
+            android:id="@+id/right_PointsYuko"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/point_one"
+            app:fab_color="@color/kumite_red"
+            app:label_backgroundColor="@color/black_transp"
+            app:label_position="left"
+            app:label_text="@string/points_Yuko"
+            app:label_textColor="@color/white" />
+
+        <com.nambimobile.widgets.efab.FabOption
+            android:id="@+id/right_PointsEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pencil"
+            app:fab_color="@color/kumite_red" />
+    </com.nambimobile.widgets.efab.ExpandableFabLayout>
+</RelativeLayout>

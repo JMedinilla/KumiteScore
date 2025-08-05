@@ -1,0 +1,80 @@
+# Android Studio
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Archivos de compilación
+/build/
+*/build/
+
+# Archivos generados por Gradle
+.gradle/
+gradle-app.setting
+gradle-wrapper.jar
+gradle-wrapper.properties
+
+# Configuración del wrapper de Gradle
+gradle/wrapper/gradle-wrapper.properties
+gradle/wrapper/gradle-wrapper.jar
+
+# Archivos de caché de Gradle
+.cxx/
+.local/
+
+# Archivos de ejecución
+*.apk
+*.ap_
+*.aab
+
+# Archivos de log
+*.log
+
+# Configuración del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración personales
+local.properties
+*.keystore
+*.jks
+
+# Archivos de lint
+lint/reports/
+lint/intermediates/
+
+# Archivos de NDK
+obj/
+.externalNativeBuild/
+
+# Configuración de código
+captures/
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/gradle.xml
+.idea/compiler.xml
+.idea/codeStyles/
+.idea/inspectionProfiles/
+
+# Archivos de test
+test-results/
+outputs/
+
+# Archivos de Flutter (si usas Flutter)
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+.flutter-plugins
+.metadata
+
+# Otros
+*.orig
+*.swp
+*.swo

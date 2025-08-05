@@ -1,0 +1,34 @@
+<resources>
+    <string name="contentDescription" translatable="false">Placeholder</string>
+    <string name="app_name" translatable="false">KumiteScore</string>
+    <string name="default_score" translatable="false">0</string>
+    <string name="default_time" translatable="false">2:00</string>
+    <string name="ato_10" translatable="false">10 s</string>
+    <string name="ato_15" translatable="false">15 s</string>
+    <string name="timer_separator" translatable="false">:</string>
+    <string name="menuActionResetAll">Reset All</string>
+    <string name="menuActionResetScore">Reset Score</string>
+    <string name="menuActionResetFaults">Reset Fouls</string>
+    <string name="menuActionResetTimer">Reset Timer</string>
+    <string name="picker_cancel">Cancel</string>
+    <string name="picker_save">Save</string>
+    <string name="time_left" translatable="false">%1$s:%2$s</string>
+    <string name="pickerTitle_current">Current time</string>
+    <string name="pickerTitle_default">Default time</string>
+    <string name="menuTitle_Time">Default Time</string>
+    <string name="menuTitle_Sound">Sound</string>
+    <string name="menuTitle_Ato" translatable="false">Ato Shibaraku</string>
+    <string name="ippon" translatable="false">Ippon</string>
+    <string name="waza" translatable="false">Waza Ari</string>
+    <string name="yuko" translatable="false">Yuko</string>
+    <string name="points_Ippon" translatable="false">IPPON</string>
+    <string name="points_Waza" translatable="false">WAZA ARI</string>
+    <string name="points_Yuko" translatable="false">YUKO</string>
+    <string name="ipPlchldrL" translatable="false">%d</string>
+    <string name="waPlchldrL" translatable="false">%d</string>
+    <string name="yuPlchldrL" translatable="false">%d</string>
+    <string name="ipPlchldrR" translatable="false">%d</string>
+    <string name="waPlchldrR" translatable="false">%d</string>
+    <string name="yuPlchldrR" translatable="false">%d</string>
+    <string name="reset">Reset?</string>
+</resources>
