@@ -454,15 +454,15 @@ class HorizontalScoreboard : AppCompatActivity() {
         dialogBuilder.setView(dialogView)
 
         val pkIppon = dialogView.findViewById<NumberPicker>(R.id.pickIppon)
-        pkIppon.minValue = 0; pkIppon.maxValue = 99;
+        pkIppon.minValue = 0; pkIppon.maxValue = 30;
         pkIppon.wrapSelectorWheel = false; pkIppon.value = tmpI
 
         val pkWaza = dialogView.findViewById<NumberPicker>(R.id.pickWaza)
-        pkWaza.minValue = 0; pkWaza.maxValue = 99;
+        pkWaza.minValue = 0; pkWaza.maxValue = 30;
         pkWaza.wrapSelectorWheel = false; pkWaza.value = tmpW
 
         val pkYuko = dialogView.findViewById<NumberPicker>(R.id.pickYuko)
-        pkYuko.minValue = 0; pkYuko.maxValue = 99;
+        pkYuko.minValue = 0; pkYuko.maxValue = 30;
         pkYuko.wrapSelectorWheel = false; pkYuko.value = tmpY
 
         dialogBuilder.setNegativeButton(resources.getString(R.string.picker_cancel)) { _, _ -> }
@@ -520,35 +520,39 @@ class HorizontalScoreboard : AppCompatActivity() {
     }
 
     private fun printLeftScore(ls: Int) {
-        txtLeftScore?.text = String.format(Locale.US, "%d", ls)
+        var score: Int = ls
+        if (ls > 99) score = 99
+        txtLeftScore?.text = String.format(Locale.US, "%d", score)
     }
 
     private fun printRightScore(rs: Int) {
-        txtRightScore?.text = String.format(Locale.US, "%d", rs)
+        var score: Int = rs
+        if (rs > 99) score = 99
+        txtRightScore?.text = String.format(Locale.US, "%d", score)
     }
 
     private fun printLeftIppons(li: Int) {
-        txtLeftIppons?.text = getString(R.string.ipPlchldrL, li)
+        txtLeftIppons?.text = getString(R.string.PlcHldr, li)
     }
 
     private fun printLeftWazas(lw: Int) {
-        txtLeftWazas?.text = getString(R.string.waPlchldrL, lw)
+        txtLeftWazas?.text = getString(R.string.PlcHldr, lw)
     }
 
     private fun printLeftYukos(ly: Int) {
-        txtLeftYukos?.text = getString(R.string.yuPlchldrL, ly)
+        txtLeftYukos?.text = getString(R.string.PlcHldr, ly)
     }
 
     private fun printRightIppons(ri: Int) {
-        txtRightIppons?.text = getString(R.string.ipPlchldrR, ri)
+        txtRightIppons?.text = getString(R.string.PlcHldr, ri)
     }
 
     private fun printRightWazas(rw: Int) {
-        txtRightWazas?.text = getString(R.string.waPlchldrR, rw)
+        txtRightWazas?.text = getString(R.string.PlcHldr, rw)
     }
 
     private fun printRightYukos(ry: Int) {
-        txtRightYukos?.text = getString(R.string.yuPlchldrR, ry)
+        txtRightYukos?.text = getString(R.string.PlcHldr, ry)
     }
 
     private fun printSenshu(ls: Boolean, rs: Boolean) {

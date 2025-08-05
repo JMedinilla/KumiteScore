@@ -6,10 +6,6 @@
     <string name="ato_10" translatable="false">10 s</string>
     <string name="ato_15" translatable="false">15 s</string>
     <string name="timer_separator" translatable="false">:</string>
-    <string name="menuActionResetAll">Reset All</string>
-    <string name="menuActionResetScore">Reset Score</string>
-    <string name="menuActionResetFaults">Reset Fouls</string>
-    <string name="menuActionResetTimer">Reset Timer</string>
     <string name="picker_cancel">Cancel</string>
     <string name="picker_save">Save</string>
     <string name="time_left" translatable="false">%1$s:%2$s</string>
@@ -24,11 +20,6 @@
     <string name="points_Ippon" translatable="false">IPPON</string>
     <string name="points_Waza" translatable="false">WAZA ARI</string>
     <string name="points_Yuko" translatable="false">YUKO</string>
-    <string name="ipPlchldrL" translatable="false">%d</string>
-    <string name="waPlchldrL" translatable="false">%d</string>
-    <string name="yuPlchldrL" translatable="false">%d</string>
-    <string name="ipPlchldrR" translatable="false">%d</string>
-    <string name="waPlchldrR" translatable="false">%d</string>
-    <string name="yuPlchldrR" translatable="false">%d</string>
+    <string name="PlcHldr" translatable="false">%d</string>
     <string name="reset">Reset?</string>
 </resources>

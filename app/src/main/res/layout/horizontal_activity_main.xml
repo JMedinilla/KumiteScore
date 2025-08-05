@@ -66,12 +66,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginBottom="10dp"
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="26dp"
+                            android:layout_height="match_parent"
                             android:layout_marginEnd="6dp"
                             android:contentDescription="@string/contentDescription"
                             android:src="@drawable/flag_ippon_left" />
@@ -81,9 +81,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="start"
-                            android:text="@string/ipPlchldrL"
+                            android:text="@string/default_score"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
+                            android:textSize="22sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -92,12 +92,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginBottom="10dp"
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="26dp"
+                            android:layout_height="match_parent"
                             android:layout_marginEnd="6dp"
                             android:contentDescription="@string/contentDescription"
                             android:src="@drawable/flag_waza_left" />
@@ -107,9 +107,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="start"
-                            android:text="@string/waPlchldrL"
+                            android:text="@string/default_score"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
+                            android:textSize="22sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -117,12 +117,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginBottom="10dp"
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="26dp"
+                            android:layout_height="match_parent"
                             android:layout_marginEnd="6dp"
                             android:contentDescription="@string/contentDescription"
                             android:src="@drawable/flag_yuko_left" />
@@ -132,9 +132,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="start"
-                            android:text="@string/yuPlchldrL"
+                            android:text="@string/default_score"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
+                            android:textSize="22sp"
                             android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
@@ -217,7 +217,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginBottom="10dp"
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -226,14 +226,14 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="6dp"
                             android:gravity="end"
-                            android:text="@string/ipPlchldrR"
+                            android:text="@string/default_score"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
+                            android:textSize="22sp"
                             android:textStyle="bold" />
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="26dp"
+                            android:layout_height="match_parent"
                             android:contentDescription="@string/contentDescription"
                             android:src="@drawable/flag_ippon_right" />
                     </LinearLayout>
@@ -242,7 +242,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginBottom="10dp"
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -251,14 +251,14 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="6dp"
                             android:gravity="end"
-                            android:text="@string/waPlchldrR"
+                            android:text="@string/default_score"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
+                            android:textSize="22sp"
                             android:textStyle="bold" />
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="26dp"
+                            android:layout_height="match_parent"
                             android:contentDescription="@string/contentDescription"
                             android:src="@drawable/flag_waza_right" />
                     </LinearLayout>
@@ -267,7 +267,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginBottom="10dp"
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -276,14 +276,14 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="6dp"
                             android:gravity="end"
-                            android:text="@string/yuPlchldrR"
+                            android:text="@string/default_score"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
+                            android:textSize="22sp"
                             android:textStyle="bold" />
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="26dp"
+                            android:layout_height="match_parent"
                             android:contentDescription="@string/contentDescription"
                             android:src="@drawable/flag_yuko_right" />
                     </LinearLayout>
