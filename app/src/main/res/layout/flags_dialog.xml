@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_trn"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="@string/ippon"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:drawableTopCompat="@drawable/flag_ippon_left" />
+
+        <ImageButton
+            android:id="@+id/dialogIppon"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/black_transp"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/point_three" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="@string/waza"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:drawableTopCompat="@drawable/flag_waza_left" />
+
+        <ImageButton
+            android:id="@+id/dialogWaza"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/black_transp"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/point_two" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="@string/yuko"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:drawableTopCompat="@drawable/flag_yuko_left" />
+
+        <ImageButton
+            android:id="@+id/dialogYuko"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/black_transp"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/point_one" />
+    </LinearLayout>
+</LinearLayout>

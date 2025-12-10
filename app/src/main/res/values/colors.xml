@@ -7,6 +7,7 @@
     <color name="kumite_blue">#495EFB</color>
     <color name="kumite_red_dark">#B72016</color>
     <color name="kumite_blue_dark">#342BB7</color>
+    <color name="black_trn">#CB000000</color>
     <color name="black_transp">#99000000</color>
     <color name="black_transp_overlay">#88000000</color>
     <color name="black_transp_light">#22000000</color>

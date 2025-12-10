@@ -1,94 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="12dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:drawablePadding="8dp"
+        android:text="@string/ippon"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:drawableStartCompat="@drawable/flag_ippon_left" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:gravity="center"
-            android:orientation="vertical">
+    <me.angrybyte.numberpicker.view.ActualNumberPicker
+        android:id="@+id/pickIppon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:clickable="false"
+        android:longClickable="false"
+        app:controls_color="@color/white"
+        app:max_value="20"
+        app:min_value="0"
+        app:show_bars="false"
+        app:show_fast_controls="false"
+        app:text_color="@color/white" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="6dp"
-                android:text="@string/ippon"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:drawablePadding="8dp"
+        android:text="@string/waza"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:drawableStartCompat="@drawable/flag_waza_left" />
 
-            <NumberPicker
-                android:id="@+id/pickIppon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:longClickable="false"
-                android:theme="@style/NumberPickerText" />
-        </LinearLayout>
+    <me.angrybyte.numberpicker.view.ActualNumberPicker
+        android:id="@+id/pickWaza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:clickable="false"
+        android:longClickable="false"
+        app:controls_color="@color/white"
+        app:max_value="20"
+        app:min_value="0"
+        app:show_bars="false"
+        app:show_fast_controls="false"
+        app:text_color="@color/white" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:gravity="center"
-            android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:drawablePadding="8dp"
+        android:text="@string/yuko"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:drawableStartCompat="@drawable/flag_yuko_left" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="6dp"
-                android:text="@string/waza"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <NumberPicker
-                android:id="@+id/pickWaza"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:longClickable="false"
-                android:theme="@style/NumberPickerText" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="6dp"
-                android:text="@string/yuko"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <NumberPicker
-                android:id="@+id/pickYuko"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:longClickable="false"
-                android:theme="@style/NumberPickerText" />
-        </LinearLayout>
-    </LinearLayout>
+    <me.angrybyte.numberpicker.view.ActualNumberPicker
+        android:id="@+id/pickYuko"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:longClickable="false"
+        app:controls_color="@color/white"
+        app:max_value="20"
+        app:min_value="0"
+        app:show_bars="false"
+        app:show_fast_controls="false"
+        app:text_color="@color/white" />
 </LinearLayout>

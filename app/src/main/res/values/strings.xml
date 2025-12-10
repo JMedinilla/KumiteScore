@@ -5,6 +5,8 @@
     <string name="default_time" translatable="false">2:00</string>
     <string name="ato_10" translatable="false">10 s</string>
     <string name="ato_15" translatable="false">15 s</string>
+    <string name="manual">Manual (+/-)</string>
+    <string name="flags">Flags</string>
     <string name="timer_separator" translatable="false">:</string>
     <string name="picker_cancel">Cancel</string>
     <string name="picker_save">Save</string>
@@ -13,6 +15,7 @@
     <string name="pickerTitle_default">Default time</string>
     <string name="menuTitle_Time">Default Time</string>
     <string name="menuTitle_Sound">Sound</string>
+    <string name="menuTitle_System">Point system</string>
     <string name="menuTitle_Ato" translatable="false">Ato Shibaraku</string>
     <string name="ippon" translatable="false">Ippon</string>
     <string name="waza" translatable="false">Waza Ari</string>
@@ -21,5 +24,7 @@
     <string name="points_Waza" translatable="false">WAZA ARI</string>
     <string name="points_Yuko" translatable="false">YUKO</string>
     <string name="PlcHldr" translatable="false">%d</string>
-    <string name="reset">Reset?</string>
+    <string name="reset">Reset?:</string>
+    <string name="accept">Yes</string>
+    <string name="zero" translatable="false">0</string>
 </resources>

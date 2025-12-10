@@ -1,12 +1,15 @@
 package jv.andmlg.kumitescore
 
 import android.content.SharedPreferences
+import android.content.res.ColorStateList
+import android.graphics.drawable.ColorDrawable
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.ImageButton
@@ -24,8 +27,9 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.google.android.material.button.MaterialButtonToggleGroup
-import com.nambimobile.widgets.efab.ExpandableFab
-import com.nambimobile.widgets.efab.FabOption
+import com.orhanobut.dialogplus.DialogPlus
+import com.orhanobut.dialogplus.ViewHolder
+import me.angrybyte.numberpicker.view.ActualNumberPicker
 import java.util.Locale
 
 class HorizontalScoreboard : AppCompatActivity() {
@@ -34,31 +38,27 @@ class HorizontalScoreboard : AppCompatActivity() {
     private var leftSideBackground: LinearLayout? = null
     private var rightSideBackground: LinearLayout? = null
 
+    private var leftFlagsLayout: LinearLayout? = null
+    private var rightFlagsLayout: LinearLayout? = null
+    private var leftTXTIppon: TextView? = null
+    private var leftTXTWaza: TextView? = null
+    private var leftTXTYuko: TextView? = null
+    private var rightTXTIppon: TextView? = null
+    private var rightTXTWaza: TextView? = null
+    private var rightTXTYuko: TextView? = null
+
     private var txtTimer: AppCompatTextView? = null
+
+    private var btnLeftPlus: ImageButton? = null
+    private var btnLeftMinus: ImageButton? = null
+    private var btnRightPlus: ImageButton? = null
+    private var btnRightMinus: ImageButton? = null
 
     private var txtLeftScore: AppCompatTextView? = null
     private var txtRightScore: AppCompatTextView? = null
-    private var txtLeftIppons: AppCompatTextView? = null
-    private var txtLeftWazas: AppCompatTextView? = null
-    private var txtLeftYukos: AppCompatTextView? = null
-    private var txtRightIppons: AppCompatTextView? = null
-    private var txtRightWazas: AppCompatTextView? = null
-    private var txtRightYukos: AppCompatTextView? = null
 
     private var btnLeftSenshu: ImageView? = null
     private var btnRightSenshu: ImageView? = null
-
-    private var btnLeftPointsMain: ExpandableFab? = null
-    private var btnRightPointsMain: ExpandableFab? = null
-
-    private var btnLeftIppon: FabOption? = null
-    private var btnLeftWaza: FabOption? = null
-    private var btnLeftYuko: FabOption? = null
-    private var btnLeftEdit: FabOption? = null
-    private var btnRightIppon: FabOption? = null
-    private var btnRightWaza: FabOption? = null
-    private var btnRightYuko: FabOption? = null
-    private var btnRightEdit: FabOption? = null
 
     private var btnLeftChui1: ImageView? = null
     private var btnLeftChui2: ImageView? = null
@@ -85,6 +85,7 @@ class HorizontalScoreboard : AppCompatActivity() {
     private var timerPlaying = false
     private var atoShibaraku = 15
 
+    private var manualSystem = true
     private var sound = true
     private var leftSideColor = "B"
     private var rightSideColor = "R"
@@ -96,12 +97,12 @@ class HorizontalScoreboard : AppCompatActivity() {
     private var leftSenshu = false
     private var rightSenshu = false
 
-    private var leftIppons = 0
-    private var leftWazas = 0
-    private var leftYukos = 0
-    private var rightIppons = 0
-    private var rightWazas = 0
-    private var rightYukos = 0
+    private var lIppon = 0
+    private var lWaza = 0
+    private var lYuko = 0
+    private var rIppon = 0
+    private var rWaza = 0
+    private var rYuko = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -127,43 +128,56 @@ class HorizontalScoreboard : AppCompatActivity() {
             true
         }
 
-        btnLeftIppon?.setOnClickListener {
-            if (leftScore < 99) leftScore += 3; leftIppons += 1
-            printLeftScore(leftScore)
-            printLeftIppons(leftIppons)
-        }
-        btnLeftWaza?.setOnClickListener {
-            if (leftScore < 99) leftScore += 2; leftWazas += 1
-            printLeftScore(leftScore)
-            printLeftWazas(leftWazas)
-        }
-        btnLeftYuko?.setOnClickListener {
-            if (leftScore < 99) leftScore += 1; leftYukos += 1
-            printLeftScore(leftScore)
-            printLeftYukos(leftYukos)
-        }
-        btnLeftEdit?.setOnClickListener {
-            openPointsPicker(true)
-        }
-        btnRightIppon?.setOnClickListener {
-            if (rightScore < 99) rightScore += 3; rightIppons += 1
-            printRightScore(rightScore)
-            printRightIppons(rightIppons)
-        }
-        btnRightWaza?.setOnClickListener {
-            if (rightScore < 99) rightScore += 2; rightWazas += 1
-            printRightScore(rightScore)
-            printRightWazas(rightWazas)
-        }
-        btnRightYuko?.setOnClickListener {
-            if (rightScore < 99) rightScore += 1; rightYukos += 1
-            printRightScore(rightScore)
-            printRightYukos(rightYukos)
-        }
-        btnRightEdit?.setOnClickListener {
-            openPointsPicker(false)
-        }
+        setSenshuButtons()
+        setChuiButtons()
+        setMenuButtons()
 
+        readDefaultValues()
+        resetAll()
+    }
+
+    private fun findViews() {
+        leftSideBackground = findViewById(R.id.leftSideScreen)
+        rightSideBackground = findViewById(R.id.rightSideScreen)
+        leftFlagsLayout = findViewById(R.id.leftFlagsLayout)
+        rightFlagsLayout = findViewById(R.id.rightFlagsLayout)
+
+        leftTXTIppon = findViewById(R.id.leftTextIppon)
+        leftTXTWaza = findViewById(R.id.leftTextWaza)
+        leftTXTYuko = findViewById(R.id.leftTextYuko)
+        rightTXTIppon = findViewById(R.id.rightTextIppon)
+        rightTXTWaza = findViewById(R.id.rightTextWaza)
+        rightTXTYuko = findViewById(R.id.rightTextYuko)
+
+        txtTimer = findViewById(R.id.mainMatchTimer)
+        txtLeftScore = findViewById(R.id.leftScore)
+        txtRightScore = findViewById(R.id.rightScore)
+
+        btnLeftPlus = findViewById(R.id.leftPlusButton)
+        btnLeftMinus = findViewById(R.id.leftMinusButton)
+        btnRightPlus = findViewById(R.id.rightPlusButton)
+        btnRightMinus = findViewById(R.id.rightMinusButton)
+
+        btnLeftSenshu = findViewById(R.id.leftSenshuButton)
+        btnRightSenshu = findViewById(R.id.rightSenshuButton)
+
+        btnLeftChui1 = findViewById(R.id.left_1C)
+        btnLeftChui2 = findViewById(R.id.left_2C)
+        btnLeftChui3 = findViewById(R.id.left_3C)
+        btnLeftHC = findViewById(R.id.left_HC)
+        btnLeftH = findViewById(R.id.left_H)
+        btnRightChui1 = findViewById(R.id.right_1C)
+        btnRightChui2 = findViewById(R.id.right_2C)
+        btnRightChui3 = findViewById(R.id.right_3C)
+        btnRightHC = findViewById(R.id.right_HC)
+        btnRightH = findViewById(R.id.right_H)
+
+        btnSettings = findViewById(R.id.barSettings)
+        btnSwap = findViewById(R.id.barSwap)
+        btnReset = findViewById(R.id.barReset)
+    }
+
+    private fun setSenshuButtons() {
         btnLeftSenshu?.setOnClickListener {
             if (!leftSenshu && !rightSenshu) leftSenshu = true
             else if (leftSenshu) leftSenshu = false
@@ -174,7 +188,9 @@ class HorizontalScoreboard : AppCompatActivity() {
             else if (rightSenshu) rightSenshu = false
             printSenshu(leftSenshu, rightSenshu)
         }
+    }
 
+    private fun setChuiButtons() {
         btnLeftChui1?.setOnClickListener {
             leftChui = if (leftChui == 1) {
                 0
@@ -245,14 +261,16 @@ class HorizontalScoreboard : AppCompatActivity() {
                 5
             }; printRightChui(rightChui)
         }
+    }
 
+    private fun setMenuButtons() {
         btnSettings?.setOnClickListener {
             openSettingsMenu()
         }
         btnReset?.setOnClickListener {
             val popup = LayoutInflater.from(this).inflate(R.layout.reset_confirm, null)
             popup.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
-            val confirm = popup.findViewById<ImageView>(R.id.popConfirm)
+            val confirm = popup.findViewById<Button>(R.id.popConfirm)
             val popupHeight = popup.measuredHeight
 
             val pop = PopupWindow(
@@ -272,67 +290,19 @@ class HorizontalScoreboard : AppCompatActivity() {
             pop.showAtLocation(it, Gravity.NO_GRAVITY, location[0], location[1] - popupHeight)
         }
         btnSwap?.setOnClickListener {
+            val tmpIppon = lIppon; lIppon = rIppon; rIppon = tmpIppon
+            val tmpWaza = lWaza; lWaza = rWaza; rWaza = tmpWaza
+            val tmpYuko = lYuko; lYuko = rYuko; rYuko = tmpYuko
+
             val tmpColor = leftSideColor; leftSideColor = rightSideColor; rightSideColor = tmpColor
             printBackgroundColors(leftSideColor, rightSideColor)
             val tmpSenshu = leftSenshu; leftSenshu = rightSenshu; rightSenshu = tmpSenshu
             printSenshu(leftSenshu, rightSenshu)
             val tmpScore = leftScore; leftScore = rightScore; rightScore = tmpScore
             printLeftScore(leftScore); printRightScore(rightScore)
-            val tmpIppons = leftIppons; leftIppons = rightIppons; rightIppons = tmpIppons
-            printLeftIppons(leftIppons); printRightIppons(rightIppons)
-            val tmpWazas = leftWazas; leftWazas = rightWazas; rightWazas = tmpWazas
-            printLeftWazas(leftWazas); printRightWazas(rightWazas)
-            val tmpYukos = leftYukos; leftYukos = rightYukos; rightYukos = tmpYukos
-            printLeftYukos(leftYukos); printRightYukos(rightYukos)
             val tmpChui = leftChui; leftChui = rightChui; rightChui = tmpChui
             printLeftChui(leftChui); printRightChui(rightChui)
         }
-
-        readDefaultValues()
-        resetAll()
-    }
-
-    private fun findViews() {
-        leftSideBackground = findViewById(R.id.leftSideScreen)
-        rightSideBackground = findViewById(R.id.rightSideScreen)
-        txtTimer = findViewById(R.id.mainMatchTimer)
-        txtLeftScore = findViewById(R.id.leftScore)
-        txtRightScore = findViewById(R.id.rightScore)
-        txtLeftIppons = findViewById(R.id.textLeft_Ippon)
-        txtLeftWazas = findViewById(R.id.textLeft_Waza)
-        txtLeftYukos = findViewById(R.id.textLeft_Yuko)
-        txtRightIppons = findViewById(R.id.textRight_Ippon)
-        txtRightWazas = findViewById(R.id.textRight_Waza)
-        txtRightYukos = findViewById(R.id.textRight_Yuko)
-
-        btnLeftSenshu = findViewById(R.id.leftSenshuButton)
-        btnRightSenshu = findViewById(R.id.rightSenshuButton)
-
-        btnLeftPointsMain = findViewById(R.id.left_PointsMain)
-        btnRightPointsMain = findViewById(R.id.right_PointsMain)
-        btnLeftIppon = findViewById(R.id.left_PointsIppon)
-        btnLeftWaza = findViewById(R.id.left_PointsWaza)
-        btnLeftYuko = findViewById(R.id.left_PointsYuko)
-        btnLeftEdit = findViewById(R.id.left_PointsEdit)
-        btnRightIppon = findViewById(R.id.right_PointsIppon)
-        btnRightWaza = findViewById(R.id.right_PointsWaza)
-        btnRightYuko = findViewById(R.id.right_PointsYuko)
-        btnRightEdit = findViewById(R.id.right_PointsEdit)
-
-        btnLeftChui1 = findViewById(R.id.left_1C)
-        btnLeftChui2 = findViewById(R.id.left_2C)
-        btnLeftChui3 = findViewById(R.id.left_3C)
-        btnLeftHC = findViewById(R.id.left_HC)
-        btnLeftH = findViewById(R.id.left_H)
-        btnRightChui1 = findViewById(R.id.right_1C)
-        btnRightChui2 = findViewById(R.id.right_2C)
-        btnRightChui3 = findViewById(R.id.right_3C)
-        btnRightHC = findViewById(R.id.right_HC)
-        btnRightH = findViewById(R.id.right_H)
-
-        btnSettings = findViewById(R.id.barSettings)
-        btnSwap = findViewById(R.id.barSwap)
-        btnReset = findViewById(R.id.barReset)
     }
 
     override fun onStart() {
@@ -359,6 +329,10 @@ class HorizontalScoreboard : AppCompatActivity() {
         timerMin = getSharedPreferences("KumiteScore", MODE_PRIVATE).getInt("defMin", 2)
         timerSec = getSharedPreferences("KumiteScore", MODE_PRIVATE).getInt("defSec", 0)
         atoShibaraku = getSharedPreferences("KumiteScore", MODE_PRIVATE).getInt("defAto", 15)
+
+        manualSystem = getSharedPreferences("KumiteScore", MODE_PRIVATE).getBoolean("manual", true)
+        if (manualSystem) setManualSystem()
+        else setFlagSystem()
     }
 
     private fun openSettingsMenu() {
@@ -367,6 +341,7 @@ class HorizontalScoreboard : AppCompatActivity() {
 
         val optionTime: Button? = dialogView.findViewById(R.id.option_Clock)
         val optionAto: MaterialButtonToggleGroup? = dialogView.findViewById(R.id.AtoToggle)
+        val optionSystem: MaterialButtonToggleGroup? = dialogView.findViewById(R.id.SystemToggle)
         val optionSound: SwitchCompat? = dialogView.findViewById(R.id.option_Sound)
         val soundIcon: ImageView? = dialogView.findViewById(R.id.soundIcon)
 
@@ -382,6 +357,9 @@ class HorizontalScoreboard : AppCompatActivity() {
 
         if (atoShibaraku == 15) optionAto?.check(R.id.option_Ato15)
         else optionAto?.check(R.id.option_Ato10)
+
+        if (manualSystem) optionSystem?.check(R.id.option_SysPlus)
+        else optionSystem?.check(R.id.option_SysFlag)
 
         optionTime?.setOnClickListener {
             openDefaultPicker()
@@ -402,6 +380,19 @@ class HorizontalScoreboard : AppCompatActivity() {
                 }
                 getSharedPreferences("KumiteScore", MODE_PRIVATE).edit()
                     .putInt("defAto", atoShibaraku).apply()
+            }
+        }
+        optionSystem?.addOnButtonCheckedListener { _, checkedId, isChecked ->
+            if (isChecked) {
+                when (checkedId) {
+                    R.id.option_SysPlus -> manualSystem = true
+                    R.id.option_SysFlag -> manualSystem = false
+                }
+                getSharedPreferences("KumiteScore", MODE_PRIVATE).edit()
+                    .putBoolean("manual", manualSystem).apply()
+
+                if (manualSystem) setManualSystem()
+                else setFlagSystem()
             }
         }
 
@@ -432,58 +423,6 @@ class HorizontalScoreboard : AppCompatActivity() {
             timerMin = pickerMinutes.value
             timerSec = pickerSeconds.value
             printTimer(timerMin, timerSec)
-        }
-        dialogBuilder.create().show()
-    }
-
-    private fun openPointsPicker(ls: Boolean) {
-        var tmpI: Int
-        var tmpW: Int
-        var tmpY: Int
-
-        if (ls) {
-            tmpI = leftIppons; tmpW = leftWazas; tmpY = leftYukos
-        } else {
-            tmpI = rightIppons; tmpW = rightWazas; tmpY = rightYukos
-        }
-
-        val inflater = this.layoutInflater
-        val dialogView = inflater.inflate(R.layout.points_picker_dialog, null)
-        val dialogBuilder = AlertDialog.Builder(this)
-
-        dialogBuilder.setView(dialogView)
-
-        val pkIppon = dialogView.findViewById<NumberPicker>(R.id.pickIppon)
-        pkIppon.minValue = 0; pkIppon.maxValue = 30;
-        pkIppon.wrapSelectorWheel = false; pkIppon.value = tmpI
-
-        val pkWaza = dialogView.findViewById<NumberPicker>(R.id.pickWaza)
-        pkWaza.minValue = 0; pkWaza.maxValue = 30;
-        pkWaza.wrapSelectorWheel = false; pkWaza.value = tmpW
-
-        val pkYuko = dialogView.findViewById<NumberPicker>(R.id.pickYuko)
-        pkYuko.minValue = 0; pkYuko.maxValue = 30;
-        pkYuko.wrapSelectorWheel = false; pkYuko.value = tmpY
-
-        dialogBuilder.setNegativeButton(resources.getString(R.string.picker_cancel)) { _, _ -> }
-        dialogBuilder.setPositiveButton(resources.getString(R.string.picker_save)) { _, _ ->
-            if (ls) {
-                leftIppons = pkIppon.value; leftWazas = pkWaza.value; leftYukos = pkYuko.value
-                leftScore = (leftIppons * 3) + (leftWazas * 2) + leftYukos
-
-                printLeftIppons(leftIppons)
-                printLeftWazas(leftWazas)
-                printLeftYukos(leftYukos)
-                printLeftScore(leftScore)
-            } else {
-                rightIppons = pkIppon.value; rightWazas = pkWaza.value; rightYukos = pkYuko.value
-                rightScore = (rightIppons * 3) + (rightWazas * 2) + rightYukos
-
-                printRightIppons(rightIppons)
-                printRightWazas(rightWazas)
-                printRightYukos(rightYukos)
-                printRightScore(rightScore)
-            }
         }
         dialogBuilder.create().show()
     }
@@ -519,40 +458,128 @@ class HorizontalScoreboard : AppCompatActivity() {
         dialogBuilder.create().show()
     }
 
+    private fun openFlagMenu(left: Boolean) {
+        val inflater = this.layoutInflater
+        val dialogView = inflater.inflate(R.layout.flags_dialog, null)
+
+        val btnIppon = dialogView.findViewById<ImageButton>(R.id.dialogIppon)
+        val btnWaza = dialogView.findViewById<ImageButton>(R.id.dialogWaza)
+        val btnYuko = dialogView.findViewById<ImageButton>(R.id.dialogYuko)
+
+        if (left) {
+            val color = leftSideBackground?.background as ColorDrawable
+            btnIppon.backgroundTintList = ColorStateList.valueOf(color.color)
+            btnWaza.backgroundTintList = ColorStateList.valueOf(color.color)
+            btnYuko.backgroundTintList = ColorStateList.valueOf(color.color)
+        } else {
+            val color = rightSideBackground?.background as ColorDrawable
+            btnIppon.backgroundTintList = ColorStateList.valueOf(color.color)
+            btnWaza.backgroundTintList = ColorStateList.valueOf(color.color)
+            btnYuko.backgroundTintList = ColorStateList.valueOf(color.color)
+        }
+
+        val newDialog = DialogPlus.newDialog(this)
+            .setContentHolder(ViewHolder(dialogView))
+            .setGravity(Gravity.CENTER)
+            .setContentWidth(ViewGroup.LayoutParams.WRAP_CONTENT)
+            .setContentHeight(ViewGroup.LayoutParams.WRAP_CONTENT)
+
+        newDialog.setOnClickListener { dialog: DialogPlus, view: View ->
+            when (view) {
+                btnIppon -> {
+                    if (left) {
+                        lIppon += 1
+                        leftScore = (lIppon * 3) + (lWaza * 2) + lYuko
+                        printLeftScore(leftScore)
+                    } else {
+                        rIppon += 1
+                        rightScore = (rIppon * 3) + (rWaza * 2) + rYuko
+                        printRightScore(rightScore)
+                    }
+                }
+
+                btnWaza -> {
+                    if (left) {
+                        lWaza += 1
+                        leftScore = (lIppon * 3) + (lWaza * 2) + lYuko
+                        printLeftScore(leftScore)
+                    } else {
+                        rWaza += 1
+                        rightScore = (rIppon * 3) + (rWaza * 2) + rYuko
+                        printRightScore(rightScore)
+                    }
+                }
+
+                btnYuko -> {
+                    if (left) {
+                        lYuko += 1
+                        leftScore = (lIppon * 3) + (lWaza * 2) + lYuko
+                        printLeftScore(leftScore)
+                    } else {
+                        rYuko += 1
+                        rightScore = (rIppon * 3) + (rWaza * 2) + rYuko
+                        printRightScore(rightScore)
+                    }
+                }
+            }
+            dialog.dismiss()
+        }
+        newDialog.create().show()
+    }
+
+    private fun openEditScore(left: Boolean) {
+        val inflater = this.layoutInflater
+        val dialogView = inflater.inflate(R.layout.points_picker_dialog, null)
+        val dialogBuilder = AlertDialog.Builder(this)
+        dialogBuilder.setView(dialogView)
+
+        val pickIppon = dialogView.findViewById<ActualNumberPicker>(R.id.pickIppon)
+        val pickWaza = dialogView.findViewById<ActualNumberPicker>(R.id.pickWaza)
+        val pickYuko = dialogView.findViewById<ActualNumberPicker>(R.id.pickYuko)
+
+        if (left) {
+            pickIppon.value = lIppon; pickWaza.value = lWaza; pickYuko.value = lYuko
+        } else {
+            pickIppon.value = rIppon; pickWaza.value = rWaza; pickYuko.value = rYuko
+        }
+
+        dialogBuilder.setNegativeButton(resources.getString(R.string.picker_cancel)) { _, _ -> }
+        dialogBuilder.setPositiveButton(resources.getString(R.string.picker_save)) { _, _ ->
+            if (left) {
+                lIppon = pickIppon.value; lWaza = pickWaza.value; lYuko = pickYuko.value
+                leftScore = (lIppon * 3) + (lWaza * 2) + (lYuko)
+                printLeftScore(leftScore)
+            } else {
+                rIppon = pickIppon.value; rWaza = pickWaza.value; rYuko = pickYuko.value
+                rightScore = (rIppon * 3) + (rWaza * 2) + (rYuko)
+                printRightScore(rightScore)
+            }
+        }
+        dialogBuilder.create().show()
+    }
+
     private fun printLeftScore(ls: Int) {
         var score: Int = ls
         if (ls > 99) score = 99
         txtLeftScore?.text = String.format(Locale.US, "%d", score)
+
+        if (!manualSystem) {
+            leftTXTIppon?.text = "$lIppon"
+            leftTXTWaza?.text = "$lWaza"
+            leftTXTYuko?.text = "$lYuko"
+        }
     }
 
     private fun printRightScore(rs: Int) {
         var score: Int = rs
         if (rs > 99) score = 99
         txtRightScore?.text = String.format(Locale.US, "%d", score)
-    }
 
-    private fun printLeftIppons(li: Int) {
-        txtLeftIppons?.text = getString(R.string.PlcHldr, li)
-    }
-
-    private fun printLeftWazas(lw: Int) {
-        txtLeftWazas?.text = getString(R.string.PlcHldr, lw)
-    }
-
-    private fun printLeftYukos(ly: Int) {
-        txtLeftYukos?.text = getString(R.string.PlcHldr, ly)
-    }
-
-    private fun printRightIppons(ri: Int) {
-        txtRightIppons?.text = getString(R.string.PlcHldr, ri)
-    }
-
-    private fun printRightWazas(rw: Int) {
-        txtRightWazas?.text = getString(R.string.PlcHldr, rw)
-    }
-
-    private fun printRightYukos(ry: Int) {
-        txtRightYukos?.text = getString(R.string.PlcHldr, ry)
+        if (!manualSystem) {
+            rightTXTIppon?.text = "$rIppon"
+            rightTXTWaza?.text = "$rWaza"
+            rightTXTYuko?.text = "$rYuko"
+        }
     }
 
     private fun printSenshu(ls: Boolean, rs: Boolean) {
@@ -669,46 +696,22 @@ class HorizontalScoreboard : AppCompatActivity() {
     private fun printBackgroundColors(lc: String, rc: String) {
         if (lc.contentEquals("B")) {
             leftSideBackground?.setBackgroundColor(
-                ContextCompat.getColor(
-                    this, R.color.kumite_blue
-                )
+                ContextCompat.getColor(this, R.color.kumite_blue)
             )
-            btnLeftPointsMain?.efabColor = ContextCompat.getColor(this, R.color.kumite_blue_dark)
-            btnLeftIppon?.fabOptionColor = ContextCompat.getColor(this, R.color.kumite_blue)
-            btnLeftWaza?.fabOptionColor = ContextCompat.getColor(this, R.color.kumite_blue)
-            btnLeftYuko?.fabOptionColor = ContextCompat.getColor(this, R.color.kumite_blue)
-            btnLeftEdit?.fabOptionColor = ContextCompat.getColor(this, R.color.kumite_blue)
         } else if (lc.contentEquals("R")) {
             leftSideBackground?.setBackgroundColor(
                 ContextCompat.getColor(this, R.color.kumite_red)
             )
-            btnLeftPointsMain?.efabColor = ContextCompat.getColor(this, R.color.kumite_red_dark)
-            btnLeftIppon?.fabOptionColor = ContextCompat.getColor(this, R.color.kumite_red)
-            btnLeftWaza?.fabOptionColor = ContextCompat.getColor(this, R.color.kumite_red)
-            btnLeftYuko?.fabOptionColor = ContextCompat.getColor(this, R.color.kumite_red)
-            btnLeftEdit?.fabOptionColor = ContextCompat.getColor(this, R.color.kumite_red)
         }
 
         if (rc.contentEquals("B")) {
             rightSideBackground?.setBackgroundColor(
-                ContextCompat.getColor(
-                    this, R.color.kumite_blue
-                )
+                ContextCompat.getColor(this, R.color.kumite_blue)
             )
-            btnRightPointsMain?.efabColor = ContextCompat.getColor(this, R.color.kumite_blue_dark)
-            btnRightIppon?.fabOptionColor = ContextCompat.getColor(this, R.color.kumite_blue)
-            btnRightWaza?.fabOptionColor = ContextCompat.getColor(this, R.color.kumite_blue)
-            btnRightYuko?.fabOptionColor = ContextCompat.getColor(this, R.color.kumite_blue)
-            btnRightEdit?.fabOptionColor = ContextCompat.getColor(this, R.color.kumite_blue)
         } else if (rc.contentEquals("R")) {
             rightSideBackground?.setBackgroundColor(
                 ContextCompat.getColor(this, R.color.kumite_red)
             )
-            btnRightPointsMain?.efabColor = ContextCompat.getColor(this, R.color.kumite_red_dark)
-            btnRightIppon?.fabOptionColor = ContextCompat.getColor(this, R.color.kumite_red)
-            btnRightWaza?.fabOptionColor = ContextCompat.getColor(this, R.color.kumite_red)
-            btnRightYuko?.fabOptionColor = ContextCompat.getColor(this, R.color.kumite_red)
-            btnRightEdit?.fabOptionColor = ContextCompat.getColor(this, R.color.kumite_red)
         }
     }
 
@@ -726,25 +729,19 @@ class HorizontalScoreboard : AppCompatActivity() {
     }
 
     private fun resetScore() {
+        lIppon = 0
+        lWaza = 0
+        lYuko = 0
+        rIppon = 0
+        rWaza = 0
+        rYuko = 0
         leftScore = 0
         rightScore = 0
         leftSenshu = false
         rightSenshu = false
-        leftIppons = 0
-        leftWazas = 0
-        leftYukos = 0
-        rightIppons = 0
-        rightWazas = 0
-        rightYukos = 0
         printLeftScore(leftScore)
         printRightScore(rightScore)
         printSenshu(leftSenshu, rightSenshu)
-        printLeftIppons(leftIppons)
-        printLeftWazas(leftWazas)
-        printLeftYukos(leftYukos)
-        printRightIppons(rightIppons)
-        printRightWazas(rightWazas)
-        printRightYukos(rightYukos)
     }
 
     private fun resetFaults() {
@@ -797,5 +794,57 @@ class HorizontalScoreboard : AppCompatActivity() {
 
     private fun playSoundShort() {
         timerPlayerShort?.start()
+    }
+
+    private fun setManualSystem() {
+        resetAll()
+        leftFlagsLayout?.visibility = View.INVISIBLE
+        rightFlagsLayout?.visibility = View.INVISIBLE
+
+        btnLeftPlus?.setImageResource(R.drawable.arrow_up)
+        btnRightPlus?.setImageResource(R.drawable.arrow_up)
+        btnLeftMinus?.setImageResource(R.drawable.arrow_down)
+        btnRightMinus?.setImageResource(R.drawable.arrow_down)
+
+        btnLeftPlus?.setOnClickListener {
+            if (leftScore < 99) leftScore += 1
+            printLeftScore(leftScore)
+        }
+        btnLeftMinus?.setOnClickListener {
+            if (leftScore > 0) leftScore -= 1
+            printLeftScore(leftScore)
+        }
+        btnRightPlus?.setOnClickListener {
+            if (rightScore < 99) rightScore += 1
+            printRightScore(rightScore)
+        }
+        btnRightMinus?.setOnClickListener {
+            if (rightScore > 0) rightScore -= 1
+            printRightScore(rightScore)
+        }
+    }
+
+    private fun setFlagSystem() {
+        resetAll()
+        leftFlagsLayout?.visibility = View.VISIBLE
+        rightFlagsLayout?.visibility = View.VISIBLE
+
+        btnLeftPlus?.setImageResource(R.drawable.plus)
+        btnRightPlus?.setImageResource(R.drawable.plus)
+        btnLeftMinus?.setImageResource(R.drawable.pencil_left)
+        btnRightMinus?.setImageResource(R.drawable.pencil_left)
+
+        btnLeftPlus?.setOnClickListener {
+            openFlagMenu(true)
+        }
+        btnLeftMinus?.setOnClickListener {
+            openEditScore(true)
+        }
+        btnRightPlus?.setOnClickListener {
+            openFlagMenu(false)
+        }
+        btnRightMinus?.setOnClickListener {
+            openEditScore(false)
+        }
     }
 }

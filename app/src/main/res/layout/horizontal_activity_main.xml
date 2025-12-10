@@ -52,107 +52,56 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="12"
+                android:layout_weight="11"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
-                    android:gravity="bottom|start"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="3dp">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginBottom="10dp"
-                        android:orientation="horizontal">
+                    <ImageButton
+                        android:id="@+id/leftPlusButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_weight="2"
+                        android:background="@drawable/rounded_button"
+                        android:contentDescription="@string/contentDescription"
+                        android:src="@drawable/arrow_up" />
 
-                        <ImageView
-                            android:layout_width="26dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginEnd="6dp"
-                            android:contentDescription="@string/contentDescription"
-                            android:src="@drawable/flag_ippon_left" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/textLeft_Ippon"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="start"
-                            android:text="@string/default_score"
-                            android:textColor="@color/white"
-                            android:textSize="22sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginBottom="10dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="26dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginEnd="6dp"
-                            android:contentDescription="@string/contentDescription"
-                            android:src="@drawable/flag_waza_left" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/textLeft_Waza"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="start"
-                            android:text="@string/default_score"
-                            android:textColor="@color/white"
-                            android:textSize="22sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginBottom="10dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="26dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginEnd="6dp"
-                            android:contentDescription="@string/contentDescription"
-                            android:src="@drawable/flag_yuko_left" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/textLeft_Yuko"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="start"
-                            android:text="@string/default_score"
-                            android:textColor="@color/white"
-                            android:textSize="22sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/leftMinusButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_button"
+                        android:contentDescription="@string/contentDescription"
+                        android:src="@drawable/arrow_down" />
                 </LinearLayout>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/leftScore"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="5"
-                    android:gravity="center"
-                    android:text="@string/default_score"
-                    android:textColor="@color/white"
-                    android:textSize="160sp" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="5"
+                    android:layout_weight="8"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/leftScore"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/default_score"
+                        android:textColor="@color/white"
+                        android:textSize="160sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -195,98 +144,47 @@
                         android:textStyle="bold" />
                 </LinearLayout>
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/rightScore"
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="5"
-                    android:gravity="center"
-                    android:text="@string/default_score"
-                    android:textColor="@color/white"
-                    android:textSize="160sp" />
+                    android:layout_weight="8"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/rightScore"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/default_score"
+                        android:textColor="@color/white"
+                        android:textSize="160sp" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
-                    android:gravity="bottom|end"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="3dp">
 
+                    <ImageButton
+                        android:id="@+id/rightPlusButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_weight="2"
+                        android:background="@drawable/rounded_button"
+                        android:contentDescription="@string/contentDescription"
+                        android:src="@drawable/arrow_up" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="10dp"
-                        android:orientation="horizontal">
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/textRight_Ippon"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="6dp"
-                            android:gravity="end"
-                            android:text="@string/default_score"
-                            android:textColor="@color/white"
-                            android:textSize="22sp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:layout_width="26dp"
-                            android:layout_height="match_parent"
-                            android:contentDescription="@string/contentDescription"
-                            android:src="@drawable/flag_ippon_right" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="10dp"
-                        android:orientation="horizontal">
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/textRight_Waza"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="6dp"
-                            android:gravity="end"
-                            android:text="@string/default_score"
-                            android:textColor="@color/white"
-                            android:textSize="22sp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:layout_width="26dp"
-                            android:layout_height="match_parent"
-                            android:contentDescription="@string/contentDescription"
-                            android:src="@drawable/flag_waza_right" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="10dp"
-                        android:orientation="horizontal">
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/textRight_Yuko"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="6dp"
-                            android:gravity="end"
-                            android:text="@string/default_score"
-                            android:textColor="@color/white"
-                            android:textSize="22sp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:layout_width="26dp"
-                            android:layout_height="match_parent"
-                            android:contentDescription="@string/contentDescription"
-                            android:src="@drawable/flag_yuko_right" />
-                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/rightMinusButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_button"
+                        android:contentDescription="@string/contentDescription"
+                        android:src="@drawable/arrow_down" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -297,9 +195,55 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/leftFlagsLayout"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="4"
+                    android:layout_weight="1"
+                    android:gravity="start|center_vertical"
+                    android:orientation="vertical"
+                    android:padding="4dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/leftTextIppon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:drawablePadding="4dp"
+                        android:text="@string/zero"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:drawableStartCompat="@drawable/flag_ippon_left" />
+
+                    <TextView
+                        android:id="@+id/leftTextWaza"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:drawablePadding="4dp"
+                        android:text="@string/zero"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:drawableStartCompat="@drawable/flag_waza_left" />
+
+                    <TextView
+                        android:id="@+id/leftTextYuko"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="4dp"
+                        android:text="@string/zero"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:drawableStartCompat="@drawable/flag_yuko_left" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -399,7 +343,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="4"
+                    android:layout_weight="5"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -483,6 +427,52 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rightFlagsLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="start|center_vertical"
+                    android:orientation="vertical"
+                    android:padding="4dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/rightTextIppon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:drawablePadding="4dp"
+                        android:text="@string/zero"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:drawableEndCompat="@drawable/flag_ippon_left" />
+
+                    <TextView
+                        android:id="@+id/rightTextWaza"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:drawablePadding="4dp"
+                        android:text="@string/zero"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:drawableEndCompat="@drawable/flag_waza_left" />
+
+                    <TextView
+                        android:id="@+id/rightTextYuko"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="4dp"
+                        android:text="@string/zero"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:drawableEndCompat="@drawable/flag_yuko_left" />
+                </LinearLayout>
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -523,128 +513,4 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </RelativeLayout>
-
-    <com.nambimobile.widgets.efab.ExpandableFabLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignEnd="@id/mainScreenDivider"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
-
-        <com.nambimobile.widgets.efab.Overlay
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:overlay_color="@color/black_transp_overlay" />
-
-        <com.nambimobile.widgets.efab.ExpandableFab
-            android:id="@+id/left_PointsMain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|start"
-            android:layout_margin="8dp"
-            app:efab_color="@color/kumite_blue_dark"
-            app:efab_fabOptionPosition="below" />
-
-        <com.nambimobile.widgets.efab.FabOption
-            android:id="@+id/left_PointsIppon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/point_three"
-            app:fab_color="@color/kumite_blue"
-            app:label_backgroundColor="@color/black_transp"
-            app:label_position="right"
-            app:label_text="@string/points_Ippon"
-            app:label_textColor="@color/white" />
-
-        <com.nambimobile.widgets.efab.FabOption
-            android:id="@+id/left_PointsWaza"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/point_two"
-            app:fab_color="@color/kumite_blue"
-            app:label_backgroundColor="@color/black_transp"
-            app:label_position="right"
-            app:label_text="@string/points_Waza"
-            app:label_textColor="@color/white" />
-
-        <com.nambimobile.widgets.efab.FabOption
-            android:id="@+id/left_PointsYuko"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/point_one"
-            app:fab_color="@color/kumite_blue"
-            app:label_backgroundColor="@color/black_transp"
-            app:label_position="right"
-            app:label_text="@string/points_Yuko"
-            app:label_textColor="@color/white" />
-
-        <com.nambimobile.widgets.efab.FabOption
-            android:id="@+id/left_PointsEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/pencil_left"
-            app:fab_color="@color/kumite_blue" />
-    </com.nambimobile.widgets.efab.ExpandableFabLayout>
-
-    <com.nambimobile.widgets.efab.ExpandableFabLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignStart="@id/mainScreenDivider"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true">
-
-        <com.nambimobile.widgets.efab.Overlay
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:overlay_color="@color/black_transp_overlay" />
-
-        <com.nambimobile.widgets.efab.ExpandableFab
-            android:id="@+id/right_PointsMain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|end"
-            android:layout_margin="8dp"
-            app:efab_color="@color/kumite_red_dark"
-            app:efab_fabOptionPosition="below" />
-
-        <com.nambimobile.widgets.efab.FabOption
-            android:id="@+id/right_PointsIppon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/point_three"
-            app:fab_color="@color/kumite_red"
-            app:label_backgroundColor="@color/black_transp"
-            app:label_position="left"
-            app:label_text="@string/points_Ippon"
-            app:label_textColor="@color/white" />
-
-        <com.nambimobile.widgets.efab.FabOption
-            android:id="@+id/right_PointsWaza"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/point_two"
-            app:fab_color="@color/kumite_red"
-            app:label_backgroundColor="@color/black_transp"
-            app:label_position="left"
-            app:label_text="@string/points_Waza"
-            app:label_textColor="@color/white" />
-
-        <com.nambimobile.widgets.efab.FabOption
-            android:id="@+id/right_PointsYuko"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/point_one"
-            app:fab_color="@color/kumite_red"
-            app:label_backgroundColor="@color/black_transp"
-            app:label_position="left"
-            app:label_text="@string/points_Yuko"
-            app:label_textColor="@color/white" />
-
-        <com.nambimobile.widgets.efab.FabOption
-            android:id="@+id/right_PointsEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/pencil"
-            app:fab_color="@color/kumite_red" />
-    </com.nambimobile.widgets.efab.ExpandableFabLayout>
 </RelativeLayout>
